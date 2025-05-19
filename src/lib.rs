@@ -14,6 +14,7 @@ enum Message{
 }
 
 impl ThreadPool{
+    
     pub fn new(size: usize) -> ThreadPool{
         assert!(size > 0);
 
@@ -59,6 +60,7 @@ impl Drop for ThreadPool{
         }
     }
 }
+
 impl Worker{
     fn new(id: usize, receiver:Arc<Mutex<mpsc::Receiver<Message>>>)->Worker{
         let thread = thread::spawn(move|| loop{
